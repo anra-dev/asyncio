@@ -18,6 +18,6 @@ def monitor():
 Thread(target=monitor).start()
 
 while True:
-    client_socket.send(b'\n')
+    client_socket.send(b'1\n')
     resp = client_socket.recv(4000)
     n += 1

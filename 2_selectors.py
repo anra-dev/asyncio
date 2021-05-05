@@ -1,5 +1,6 @@
 import socket
 import selectors
+from fib import fib
 
 selector = selectors.DefaultSelector()
 
@@ -25,7 +26,8 @@ def send_message(client_socket):
     request = client_socket.recv(4000)
 
     if request:
-        response = 'Hello world!\n'.encode()
+        result = fib(int(request))
+        response = str(result).encode() + b'\n'
         client_socket.send(response)
     else:
         selector.unregister(client_socket)
